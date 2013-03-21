@@ -14,7 +14,7 @@ public class Handler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getActionCommand().equals("Generate"))
+		if(e.getActionCommand().equals("Run Sequence"))
 		{
 			boolean flagA = false;
 			boolean flagB = false;
@@ -27,7 +27,7 @@ public class Handler implements ActionListener
 			String textB = this.frm.inputField2.getText();
 			String textC = this.frm.inputField3.getText();
 			String textD = this.frm.inputField4.getText();
-//			System.out.println(textA+"  "+textB+"  "+textC+"  "+textD);
+			
 			
 			if((textA!=null && textA.equals("")) && (textB!=null && textB.equals(""))
 					&& (textC!=null && textC.equals("")) && (textD!=null && textD.equals("")))

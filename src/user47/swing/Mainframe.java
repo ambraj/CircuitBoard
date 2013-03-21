@@ -1,9 +1,12 @@
 package user47.swing;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,22 +23,38 @@ public class Mainframe extends JFrame
 	JLabel label2 = null;
 	JLabel label3 = null;
 	JLabel label4 = null;
-	ImageIcon gateIcon1=null;
-	ImageIcon gateIcon2=null;
-	ImageIcon gateIcon3=null;
-	ImageIcon gateIcon4=null;
+	JLabel labelDev = null;
+	JLabel labelLogo = null;
+	ImageIcon gateIconAND=null;
+	ImageIcon gateIconNAND=null;
+	ImageIcon gateIconOR=null;
+	ImageIcon gateIconNOR=null;
+	ImageIcon gateIconNOT=null;
 	ImageIcon lineIconH=null;
 	ImageIcon lineIconV=null;
+	ImageIcon logoIcon = null;
 	JButton btn = null;
 	JLabel outputLabel = null;
+	JComboBox comboBox1 = null;
+	JComboBox comboBox2 = null;
+	JComboBox comboBox3 = null;
 	
 	public Mainframe()
 	{
 		setLayout(null);
 		setBackground(Color.white);
 		setTitle("Swing Application");
-		setBounds(0, 0, 1000, 700);
+		setBounds(0, 0, 700, 500);
 		
+		String []gateList = {"AND","OR","NAND","NOR"};
+		
+		logoIcon = new ImageIcon("./images/java.jpg");
+		gateIconAND = new ImageIcon("./images/and_gate.PNG");
+		gateIconNAND = new ImageIcon("./images/nand_gate.PNG");
+		gateIconOR = new ImageIcon("./images/or_gate.PNG");
+		gateIconNOR = new ImageIcon("./images/nor_gate.PNG");
+		gateIconNOT = new ImageIcon("./images/not_gate.PNG");
+
 		
 		inputField1 = new JTextField();
 		inputField1.setBounds(50, 97, 19, 17);
@@ -53,25 +72,65 @@ public class Mainframe extends JFrame
 		inputField4.setBounds(50, 261, 19, 17);
 		add(inputField4);
 		
-		gateIcon1 = new ImageIcon("./images/nand_gate.PNG");
-		label1 = new JLabel(gateIcon1);
+		
+		labelLogo = new JLabel(logoIcon);
+		labelLogo.setBounds(490, 5, 170, 170);
+		add(labelLogo);
+		 
+		label1 = new JLabel(gateIconNAND);
 		label1.setBounds(60, 80, 170, 90);
 		add(label1); 
 		
-		gateIcon2 = new ImageIcon("./images/or_gate.PNG");
-		label2 = new JLabel(gateIcon2);
+		comboBox1 = new JComboBox(gateList);
+		comboBox1.setSelectedIndex(2);
+		comboBox1.setBounds(100, 160, 75, 20);
+		add(comboBox1);
+		comboBox1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				String selectedValue = null;
+
+				JComboBox jc = (JComboBox) arg0.getSource();
+				selectedValue = (String)jc.getSelectedItem();
+				
+//				Mainframe frm = (Mainframe) jc.getParent();
+
+			/*	if(selectedValue.equalsIgnoreCase("and"))
+					this.label1.setIcon(gateIconAND);
+				else if(selectedValue.equalsIgnoreCase("nand"))
+					frm.label1.setIcon(gateIconNAND);
+				else if(selectedValue.equalsIgnoreCase("or"))
+					frm.label1.setIcon(gateIconOR);
+				else if(selectedValue.equalsIgnoreCase("nor"))
+					frm.label1.setIcon(gateIconNOR);*/
+				
+			}
+		});
+		
+		label2 = new JLabel(gateIconOR);
 		label2.setBounds(60, 205, 170, 90);
 		add(label2);
 		
-		gateIcon3 = new ImageIcon("./images/not_gate.PNG");
-		label3 = new JLabel(gateIcon3);
+		comboBox2 = new JComboBox(gateList);
+		comboBox2.setSelectedIndex(1);
+		comboBox2.setBounds(100,290, 75, 20);
+		add(comboBox2);
+		
+		
+		label3 = new JLabel(gateIconNOT);
 		label3.setBounds(247, 98, 140, 50);
 		add(label3);
 		
-		gateIcon4 = new ImageIcon("./images/or_gate.PNG");
-		label4 = new JLabel(gateIcon4);
+		label4 = new JLabel(gateIconOR);
 		label4.setBounds(359, 187, 170, 90);
 		add(label4);
+		
+		comboBox3 = new JComboBox(gateList);
+		comboBox3.setSelectedIndex(1);
+		comboBox3.setBounds(400,275, 75, 20);
+		add(comboBox3);
 		
 		outputLabel = new JLabel("output");
 		outputLabel.setBounds(520, 220, 50, 20);
@@ -102,27 +161,16 @@ public class Mainframe extends JFrame
 		label.setBounds(341, 61, 20, 220);
 		add(label);
 		
-		btn = new JButton("Generate");
-		btn.setBounds(180, 340, 150, 50);
+		btn = new JButton("Run Sequence");
+		btn.setBounds(200, 350, 150, 50);
 		add(btn);
 		btn.addActionListener(new Handler(this));
 		
+		labelDev = new JLabel("Developed By NAVED");
+		labelDev.setBounds(40, 430, 150, 20);
+		add(labelDev);
 		
-//		JMenuBar mb = new JMenuBar();
-//		JMenu file = new JMenu("File");
-//		JMenuItem saveAs = new JMenuItem("Save As"); 
-//		
-//		file.add(new JMenuItem("new"));
-//		file.add(new JMenuItem("Open"));
-//		file.add(saveAs);
-//		file.add(new JMenuItem("Close"));
-//		
-//		saveAs.add(new PopupMenu("Hi"));
-//		saveAs.add(new PopupMenu("Bye"));
-//		
-//		mb.add(file);
-//		setJMenuBar(mb);
-		
+
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
