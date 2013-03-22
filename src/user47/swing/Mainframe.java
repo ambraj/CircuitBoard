@@ -3,6 +3,8 @@ package user47.swing;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,18 +61,98 @@ public class Mainframe extends JFrame
 		inputField1 = new JTextField();
 		inputField1.setBounds(50, 97, 19, 17);
 		add(inputField1);
+		inputField1.addKeyListener(new KeyListener() {
+			
+			public void keyReleased(KeyEvent e) {
+				if(!((e.getKeyCode() == 48) || (e.getKeyCode() == 49) ))
+					Mainframe.this.inputField1.setText("");				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		inputField2 = new JTextField();
 		inputField2.setBounds(50, 135, 19, 17);
 		add(inputField2);
+		inputField2.addKeyListener(new KeyListener() {
+			
+			public void keyReleased(KeyEvent e) {
+				if(!((e.getKeyCode() == 48) || (e.getKeyCode() == 49) ))
+					Mainframe.this.inputField2.setText("");				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		inputField3 = new JTextField();
 		inputField3.setBounds(50, 223, 19, 17);
 		add(inputField3);
+		inputField3.addKeyListener(new KeyListener() {
+			
+			public void keyReleased(KeyEvent e) {
+				if(!((e.getKeyCode() == 48) || (e.getKeyCode() == 49) ))
+					Mainframe.this.inputField3.setText("");				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		inputField4 = new JTextField();
 		inputField4.setBounds(50, 261, 19, 17);
 		add(inputField4);
+		inputField4.addKeyListener(new KeyListener() {
+			
+			public void keyReleased(KeyEvent e) {
+				if(!((e.getKeyCode() == 48) || (e.getKeyCode() == 49) ))
+					Mainframe.this.inputField4.setText("");				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		
 		labelLogo = new JLabel(logoIcon);
@@ -95,16 +177,15 @@ public class Mainframe extends JFrame
 				JComboBox jc = (JComboBox) arg0.getSource();
 				selectedValue = (String)jc.getSelectedItem();
 				
-//				Mainframe frm = (Mainframe) jc.getParent();
 
-			/*	if(selectedValue.equalsIgnoreCase("and"))
-					this.label1.setIcon(gateIconAND);
+				if(selectedValue.equalsIgnoreCase("and"))
+					Mainframe.this.label1.setIcon(gateIconAND);
 				else if(selectedValue.equalsIgnoreCase("nand"))
-					frm.label1.setIcon(gateIconNAND);
+					Mainframe.this.label1.setIcon(gateIconNAND);
 				else if(selectedValue.equalsIgnoreCase("or"))
-					frm.label1.setIcon(gateIconOR);
+					Mainframe.this.label1.setIcon(gateIconOR);
 				else if(selectedValue.equalsIgnoreCase("nor"))
-					frm.label1.setIcon(gateIconNOR);*/
+					Mainframe.this.label1.setIcon(gateIconNOR);
 				
 			}
 		});
@@ -117,6 +198,28 @@ public class Mainframe extends JFrame
 		comboBox2.setSelectedIndex(1);
 		comboBox2.setBounds(100,290, 75, 20);
 		add(comboBox2);
+		comboBox2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				String selectedValue = null;
+
+				JComboBox jc = (JComboBox) arg0.getSource();
+				selectedValue = (String)jc.getSelectedItem();
+				
+
+				if(selectedValue.equalsIgnoreCase("and"))
+					Mainframe.this.label2.setIcon(gateIconAND);
+				else if(selectedValue.equalsIgnoreCase("nand"))
+					Mainframe.this.label2.setIcon(gateIconNAND);
+				else if(selectedValue.equalsIgnoreCase("or"))
+					Mainframe.this.label2.setIcon(gateIconOR);
+				else if(selectedValue.equalsIgnoreCase("nor"))
+					Mainframe.this.label2.setIcon(gateIconNOR);
+				
+			}
+		});
 		
 		
 		label3 = new JLabel(gateIconNOT);
@@ -131,6 +234,28 @@ public class Mainframe extends JFrame
 		comboBox3.setSelectedIndex(1);
 		comboBox3.setBounds(400,275, 75, 20);
 		add(comboBox3);
+		comboBox3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				String selectedValue = null;
+
+				JComboBox jc = (JComboBox) arg0.getSource();
+				selectedValue = (String)jc.getSelectedItem();
+				
+
+				if(selectedValue.equalsIgnoreCase("and"))
+					Mainframe.this.label4.setIcon(gateIconAND);
+				else if(selectedValue.equalsIgnoreCase("nand"))
+					Mainframe.this.label4.setIcon(gateIconNAND);
+				else if(selectedValue.equalsIgnoreCase("or"))
+					Mainframe.this.label4.setIcon(gateIconOR);
+				else if(selectedValue.equalsIgnoreCase("nor"))
+					Mainframe.this.label4.setIcon(gateIconNOR);
+				
+			}
+		});
 		
 		outputLabel = new JLabel("output");
 		outputLabel.setBounds(520, 220, 50, 20);
@@ -166,8 +291,8 @@ public class Mainframe extends JFrame
 		add(btn);
 		btn.addActionListener(new Handler(this));
 		
-		labelDev = new JLabel("Developed By NAVED");
-		labelDev.setBounds(40, 430, 150, 20);
+		labelDev = new JLabel("Developed By ______");
+		labelDev.setBounds(20, 430, 150, 20);
 		add(labelDev);
 		
 
